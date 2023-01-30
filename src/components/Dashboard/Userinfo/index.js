@@ -62,7 +62,7 @@ export default function Userinfo() {
                         <TableCell component="th" scope="row" align="left" sx={{
                             fontSize: "120%",
                         }}>
-                            {"Followers"}
+                            {"Following"}
                         </TableCell>
                         <TableCell align="right" sx={{
                             fontSize: "120%",
