@@ -23,7 +23,7 @@ export default function Login() {
         });
         if (data.get('username') == "admin" && data.get('password') == "admin") {
             localStorage.setItem("session", JSON.stringify(true))
-            navigate("/dashboard")
+            navigate("/profile")
         }
         else {
             setLoginData({username: "", password: ""});

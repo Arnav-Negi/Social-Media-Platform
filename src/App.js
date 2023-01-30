@@ -15,8 +15,8 @@ function App() {
         <ThemeProvider theme={theme}>
             <BrowserRouter>
                 <Routes>
-                    <Route path={"/"} element={<Auth />}/>
-                    <Route path={"/dashboard"} element={<Dashboard />} />
+                    <Route path={"/*"} element={<Auth />}/>
+                    <Route path={"/profile"} element={<Dashboard />} />
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>
