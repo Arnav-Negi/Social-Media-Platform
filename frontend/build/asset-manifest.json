@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f99cdb0d.css",
+    "main.js": "/static/js/main.d823af1a.js",
+    "static/js/496.83e98392.chunk.js": "/static/js/496.83e98392.chunk.js",
+    "static/media/bg-auth.jpeg": "/static/media/bg-auth.1b18d9c62ed0d4b6a20f.jpeg",
+    "index.html": "/index.html",
+    "main.f99cdb0d.css.map": "/static/css/main.f99cdb0d.css.map",
+    "main.d823af1a.js.map": "/static/js/main.d823af1a.js.map",
+    "496.83e98392.chunk.js.map": "/static/js/496.83e98392.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f99cdb0d.css",
+    "static/js/main.d823af1a.js"
+  ]
+}
