@@ -1,25 +1,34 @@
 import './App.css';
 import Auth from './components/Auth/index';
-import {CssBaseline} from "@mui/material";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {useState} from "react";
 import Dashboard from "./components/Dashboard";
+import {
+    RecoilRoot
+} from 'recoil';
+import axios from "axios";
+
 
 function App() {
-    const theme = createTheme({palette: {mode: 'dark'}});
+    const theme = createTheme({
+        palette: {mode: 'dark'},
+        components: {
 
+        }
+    });
+    axios.defaults.baseURL = "http://localhost:5000"
     return (
-
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path={"/*"} element={<Auth />}/>
-                    <Route path={"/profile"} element={<Dashboard />} />
-                </Routes>
-            </BrowserRouter>
-        </ThemeProvider>
+        <RecoilRoot>
+            <ThemeProvider theme={theme}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path={"/"} element={<Auth/>}/>
+                        <Route path={"/profile"} element={<Dashboard/>}/>
+                        {/*<Route path={"/*"} element={<Auth />}/>*/}
+                    </Routes>
+                </BrowserRouter>
+            </ThemeProvider>
+        </RecoilRoot>
 
     );
 }

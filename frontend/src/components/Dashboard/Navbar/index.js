@@ -6,6 +6,7 @@ import ForumIcon from '@mui/icons-material/Forum';
 import LogoutIcon from '@mui/icons-material/Logout';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import ChatIcon from '@mui/icons-material/Chat';
+import {logout} from "../../../utils/checkToken"
 
 function getIcon(string) {
     const icons = {
@@ -30,11 +31,6 @@ export default function Navbar() {
 
     const navigate = useNavigate();
     const [Path, setPath] = useState('Dashboard');
-
-    function logout() {
-        localStorage.setItem("session", false);
-        navigate("/");
-    }
 
     useEffect(() => {
         navigate(pageToPath[Path]);
@@ -82,7 +78,7 @@ export default function Navbar() {
                         <Button
                             key={"logout"}
                             sx={{my: 2, color: 'white', display: 'block', alignSelf: "right"}}
-                            onClick={() => logout()}
+                            onClick={() => {logout();navigate("/")}}
                         >
                             {getIcon("Logout")}
                             Logout

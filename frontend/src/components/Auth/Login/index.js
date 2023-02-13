@@ -1,16 +1,16 @@
-import Grid from "@mui/material/Grid";
-import {Box, ButtonGroup, FormControl, Paper, TextField, Typography} from "@mui/material";
+import {Box, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from 'axios';
 
 export default function Login() {
     const navigate = useNavigate();
-
+    const [Errors, setErrors] = useState("");
     const [LoginData, setLoginData] = useState(
         {
-            username : "",
-            password : ""
+            username: "",
+            password: ""
         }
     )
 
@@ -19,15 +19,30 @@ export default function Login() {
         const data = new FormData(event.currentTarget);
         console.log({
             username: data.get('username'),
-            password: data.get('password'),
+            password: data.get('password')
         });
-        if (data.get('username') == "admin" && data.get('password') == "admin") {
-            localStorage.setItem("session", JSON.stringify(true))
-            navigate("/profile")
-        }
-        else {
-            setLoginData({username: "", password: ""});
-        }
+
+        axios.post(`users/login`, {
+            username: data.get('username'),
+            password: data.get('password')
+        }).then(
+            (res) => {
+                const token = res.headers['x-auth-token'];
+                if (token && token !== "") {
+                    console.log("Setting token : " + token)
+                    localStorage.setItem("accessToken", token)
+                    navigate(`/profile`)
+                } else {
+                    setLoginData({username: "", password: ""});
+                }
+            }
+        ).catch(
+            (err) => {
+                console.log(err)
+                setErrors("Incorrect password / username.")
+                setLoginData({username: "", password: ""});
+            }
+        )
     }
 
     return (
@@ -47,10 +62,13 @@ export default function Login() {
                            value={LoginData.password}
                            name={"password"}
                            onChange={(e) => setLoginData({...LoginData, password: e.target.value})}
-                           label={"Password"}>
+                           label={"Password"}
+                           error={Errors !== ""}
+                           helperText={Errors}>
                     Password
                 </TextField>
-                <Button type={"submit"} variant={"outlined"} sx={{margin:"6%"}} disabled={(LoginData.username == "") || (LoginData.password == "")}>
+                <Button type={"submit"} variant={"outlined"} sx={{margin: "6%"}}
+                        disabled={(LoginData.username === "") || (LoginData.password === "")}>
                     Login
                 </Button>
             </Box>

@@ -5,14 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/auth/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/config/keys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Subgreddiit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/api/follow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/api/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/posts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/atoms/userinfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/utils/checkToken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Signup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Signup/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Navbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Navbar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/SimpleDialog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/SimpleDialog/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,18 +68,20 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/arnav/courses/4/dass/ass-1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/294/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/298/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -57,6 +92,23 @@
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start-dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start-dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -85,7 +137,21 @@
       <workItem from="1675077101431" duration="4948000" />
       <workItem from="1675085165362" duration="1274000" />
       <workItem from="1675097076832" duration="555000" />
-      <workItem from="1675712022995" duration="1098000" />
+      <workItem from="1675712022995" duration="3882000" />
+      <workItem from="1675752484605" duration="3844000" />
+      <workItem from="1675791085142" duration="8716000" />
+      <workItem from="1675826420685" duration="19128000" />
+      <workItem from="1675947100821" duration="448000" />
+      <workItem from="1675950541361" duration="21936000" />
+      <workItem from="1676014092031" duration="26083000" />
+      <workItem from="1676199219671" duration="11499000" />
+      <workItem from="1676226491657" duration="766000" />
+      <workItem from="1676228313071" duration="1775000" />
+      <workItem from="1676230110667" duration="11334000" />
+      <workItem from="1676264401208" duration="8532000" />
+      <workItem from="1676275991776" duration="1161000" />
+      <workItem from="1676279475824" duration="81000" />
+      <workItem from="1676279576762" duration="1063000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

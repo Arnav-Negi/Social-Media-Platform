@@ -1,25 +1,42 @@
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import {ButtonGroup, Paper, FormControl, TextField, CssBaseline} from "@mui/material";
+import {ButtonGroup, Paper, CssBaseline} from "@mui/material";
 import {Typography} from "@mui/material";
 import Login from "./Login";
 import Signup from "./Signup";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import authimg from "../../assets/bg-auth.jpeg"
+import {setToken, logout} from "../../utils/checkToken";
+import {useRecoilState} from "recoil";
+import {userinfo} from "../../atoms/userinfo"
+import axios from "axios";
+
 function GetAuthComponent(state) {
-    if (state == 0) return (<Login/>)
+    if (state === 0) return (<Login/>)
     else return (<Signup/>)
 }
 
-
 export default function Auth() {
     const navigate = useNavigate();
-    const authimg = require("../../assets/bg-auth.jpeg")
+    const authimg = require("../../assets/bg-auth.jpeg");
+    const [user, setUser] = useRecoilState(userinfo);
+
     useEffect(() => {
-        const LoggedIn = localStorage.getItem("session");
-        if (LoggedIn === "true")
-                navigate("/dashboard")
+        let err = setToken();
+        if (err === 1) {
+            navigate("/");
+        } else {
+            axios.get("/users/info").then((res) => {
+                console.log()
+                if (res.status === 200) {
+                    setUser(res.data);
+                    navigate("/profile");
+                } else {
+                    logout();
+                    navigate("/");
+                }
+            }).catch((err => console.log(err)));
+        }
     }, []);
 
     let [State, setState] = useState(0);

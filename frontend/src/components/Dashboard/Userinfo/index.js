@@ -1,21 +1,20 @@
 import {Paper, Table, TableBody, TableCell, TableContainer, TableRow} from "@mui/material";
 import SimpleDialog from "../SimpleDialog";
+import axios from "axios";
+import {useEffect} from "react";
+import {userinfo} from "../../../atoms/userinfo";
+import {useNavigate} from "react-router-dom";
+import {setToken} from "../../../utils/checkToken";
+import {useRecoilState} from "recoil";
 
 export default function Userinfo() {
-    const Fields = ['First Name', 'Last Name', 'Username', 'Email', 'Age', 'Contact']
+    const navigate = useNavigate();
+    const [user, setUser] = useRecoilState(userinfo);
 
-    const Info = {
-        'First Name': "Arnav",
-        'Last Name': "Negi",
-        'Username': "admin",
-        'Email': "arnavnegi14@gmail.com",
-        'Age': "19",
-        'Contact': "9995834220",
-        'Password': "admin"
-    }
-
-    const Followers = ['Rohan', 'Prakul', 'Shiven', 'Sakshat'];
-    const Following = ['Akshit', 'Prakul', 'Shiven'];
+    useEffect(() => {
+        const result = setToken();
+        if (result !== 0) navigate("/");
+    }, []);
 
     return (
         <TableContainer
@@ -28,21 +27,84 @@ export default function Userinfo() {
         >
             <Table aria-label="simple table">
                 <TableBody>
-                    {Fields.map((field) => (
-                        <TableRow
-                            key={field}
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                        >
-                            <TableCell component="th" scope="row" align="left" sx={{
-                                fontSize: "120%",
-                            }}>
-                                {field}
-                            </TableCell>
-                            <TableCell align="right" sx={{
-                                fontSize: "120%",
-                            }}>{Info[field]}</TableCell>
-                        </TableRow>
-                    ))}
+                    <TableRow
+                        key={'firstname'}
+                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                    >
+                        <TableCell component="th" scope="row" align="left" sx={{
+                            fontSize: "120%",
+                        }}>
+                            First name
+                        </TableCell>
+                        <TableCell align="right" sx={{
+                            fontSize: "120%",
+                        }}>{user['firstname']}</TableCell>
+                    </TableRow>
+                    <TableRow
+                        key={'lastname'}
+                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                    >
+                        <TableCell component="th" scope="row" align="left" sx={{
+                            fontSize: "120%",
+                        }}>
+                            Last name
+                        </TableCell>
+                        <TableCell align="right" sx={{
+                            fontSize: "120%",
+                        }}>{user['lastname']}</TableCell>
+                    </TableRow>
+                    <TableRow
+                        key={'username'}
+                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                    >
+                        <TableCell component="th" scope="row" align="left" sx={{
+                            fontSize: "120%",
+                        }}>
+                            {'Username'}
+                        </TableCell>
+                        <TableCell align="right" sx={{
+                            fontSize: "120%",
+                        }}>{user['username']}</TableCell>
+                    </TableRow>
+                    <TableRow
+                        key={'email'}
+                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                    >
+                        <TableCell component="th" scope="row" align="left" sx={{
+                            fontSize: "120%",
+                        }}>
+                            {'Email'}
+                        </TableCell>
+                        <TableCell align="right" sx={{
+                            fontSize: "120%",
+                        }}>{user['email']}</TableCell>
+                    </TableRow>
+                    <TableRow
+                        key={'age'}
+                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                    >
+                        <TableCell component="th" scope="row" align="left" sx={{
+                            fontSize: "120%",
+                        }}>
+                            {'Age'}
+                        </TableCell>
+                        <TableCell align="right" sx={{
+                            fontSize: "120%",
+                        }}>{user['age']}</TableCell>
+                    </TableRow>
+                    <TableRow
+                        key={'contact'}
+                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                    >
+                        <TableCell component="th" scope="row" align="left" sx={{
+                            fontSize: "120%",
+                        }}>
+                            {'Contact'}
+                        </TableCell>
+                        <TableCell align="right" sx={{
+                            fontSize: "120%",
+                        }}>{user['contact']}</TableCell>
+                    </TableRow>
                     <TableRow key={"Followers"}
                               sx={{'&:last-child td, &:last-child th': {border: 0}}}>
                         <TableCell component="th" scope="row" align="left" sx={{
@@ -53,11 +115,11 @@ export default function Userinfo() {
                         <TableCell align="right" sx={{
                             fontSize: "120%",
                         }}>
-                            {Followers.length}
-                            <SimpleDialog names={Followers} />
+                            {user.followers.length}
+                            <SimpleDialog names={user.followers.map((obj) => obj.username)}/>
                         </TableCell>
                     </TableRow>
-                    <TableRow key={"Followers"}
+                    <TableRow key={"Following"}
                               sx={{'&:last-child td, &:last-child th': {border: 0}}}>
                         <TableCell component="th" scope="row" align="left" sx={{
                             fontSize: "120%",
@@ -67,8 +129,8 @@ export default function Userinfo() {
                         <TableCell align="right" sx={{
                             fontSize: "120%",
                         }}>
-                            {Following.length}
-                            <SimpleDialog names={Following} />
+                            {user.following.length}
+                            <SimpleDialog names={user.following.map((obj) => obj['username'])}/>
                         </TableCell>
                     </TableRow>
                 </TableBody>
