@@ -1,14 +1,13 @@
-const express = require('express');
 const mongoose = require('mongoose');
-const AuthenticateToken = require('../../auth/auth');
-
-followRouter = express.Router();
 User = require('../../models/User');
+const express = require('express');
+followRouter = express.Router();
+const AuthenticateToken = require('../../auth/auth');
 
 followRouter.post('/',
     AuthenticateToken,
     (req, res) => {
-        User.findOne({username: req.body.username}).then((user) => {
+        User.findOne({_id: req.user.id}).then((user) => {
                 if (!user) return res.status(400).send("Follower not found.");
                 User.findOne({username: req.body.following}).then(( following) => {
                         if (!following) return res.status(400).send("User not found.");
@@ -32,6 +31,34 @@ followRouter.post('/',
                 )
             }
         )
+    })
+
+followRouter.post('/remove',
+    AuthenticateToken,
+    (req, res) => {
+        User.findOne({_id: req.user.id}).then((user) => {
+            if (!user) return res.status(400).send("User not found.")
+
+            User.findOne({username: req.body.follower}).then((follower) => {
+                if (!follower) return res.status(400).send("Follower not found.")
+
+                const followidx = follower.following.indexOf(user._id)
+                if (followidx == -1) return res.status(400).send("User doesn't follow you.")
+                const useridx = user.followers.indexOf(follower._id)
+                if (useridx == -1) return res.status(500).send()
+
+                follower.following.splice(followidx, 1)
+                user.followers.splice(useridx, 1)
+
+                follower.save().then((flw) => {
+                    console.log("follower saved")
+                }).catch(err => console.log(err))
+                user.save().then((flw) => {
+                    console.log("user saved")
+                }).catch(err => console.log(err))
+                return res.status(200).json(user);
+            })
+        }).catch(err => console.log(err))
     })
 
 module.exports = followRouter;

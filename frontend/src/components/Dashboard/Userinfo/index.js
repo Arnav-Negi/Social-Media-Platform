@@ -1,5 +1,5 @@
 import {Paper, Table, TableBody, TableCell, TableContainer, TableRow} from "@mui/material";
-import SimpleDialog from "../SimpleDialog";
+import FollowList from "../FollowList";
 import axios from "axios";
 import {useEffect} from "react";
 import {userinfo} from "../../../atoms/userinfo";
@@ -115,8 +115,7 @@ export default function Userinfo() {
                         <TableCell align="right" sx={{
                             fontSize: "120%",
                         }}>
-                            {user.followers.length}
-                            <SimpleDialog names={user.followers.map((obj) => obj.username)}/>
+                            <FollowList names={user.followers.map((obj) => obj.username)} type={'followers'}/>
                         </TableCell>
                     </TableRow>
                     <TableRow key={"Following"}
@@ -129,8 +128,7 @@ export default function Userinfo() {
                         <TableCell align="right" sx={{
                             fontSize: "120%",
                         }}>
-                            {user.following.length}
-                            <SimpleDialog names={user.following.map((obj) => obj['username'])}/>
+                            <FollowList names={user.following.map((obj) => obj['username'])} type={'following'}/>
                         </TableCell>
                     </TableRow>
                 </TableBody>

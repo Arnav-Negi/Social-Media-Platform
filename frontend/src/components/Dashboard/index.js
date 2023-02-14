@@ -1,11 +1,13 @@
 import Navbar from "./Navbar";
 import Userinfo from "./Userinfo";
 import {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {Route, Routes, useNavigate, useParams} from "react-router-dom";
 import {useRecoilState} from "recoil";
 import {userinfo} from "../../atoms/userinfo";
 import {setToken} from "../../utils/checkToken"
 import axios from "axios";
+import Auth from "../Auth";
+import MySubgreddiits from "./MySubgreddiits";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -23,7 +25,10 @@ export default function Dashboard() {
             <div>
                 <Navbar/>
                 <div className={"bg-orange-400 h-screen flex place-items-center justify-center"}>
-                    <Userinfo/>
+                    <Routes>
+                        <Route path={"/subgreddiits/my"} element={<MySubgreddiits/>}/>
+                        <Route path={"/"} element={<Userinfo />} />
+                    </Routes>
                 </div>
             </div>
         )

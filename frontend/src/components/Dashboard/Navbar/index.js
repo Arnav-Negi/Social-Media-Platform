@@ -1,5 +1,5 @@
 import {AppBar, Typography, Container, Toolbar, Button, Box} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ForumIcon from '@mui/icons-material/Forum';
@@ -12,8 +12,8 @@ function getIcon(string) {
     const icons = {
         'Profile': <AccountCircleIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>,
         'Subgreddiit': <ForumIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>,
-        'My Subgreddiits' : <ChatIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>,
-        'Saved' : <BookmarksIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>,
+        'My Subgreddiits': <ChatIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>,
+        'Saved': <BookmarksIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>,
         'Logout': <LogoutIcon sx={{fontSize: '200%', paddingRight: '4%'}}/>
     };
 
@@ -21,25 +21,12 @@ function getIcon(string) {
 }
 
 export default function Navbar() {
-    const pages = ['Profile', 'Subgreddiit', 'My Subgreddiits', 'Saved'];
-    const pageToPath = {
-        'Profile': '/profile',
-        'Subgreddiit': '/profile',
-        'My Subgreddits': '/profile',
-        'Saved': '/profile'
-    };
-
     const navigate = useNavigate();
-    const [Path, setPath] = useState('Dashboard');
-
-    useEffect(() => {
-        navigate(pageToPath[Path]);
-    }, [Path]);
 
     return (
         <AppBar
             sx={{
-                height: "5%",
+                height: "7%",
                 position: "fixed",
                 backgroundColor: "black"
             }}
@@ -64,21 +51,41 @@ export default function Navbar() {
                         GREDDIIT
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex', justifyContent: 'flex-end'}}}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                sx={{my: 2, color: 'white', display: 'block', paddingLeft : '1%'}}
-                                onClick={() => setPath(page)}
-                            >
-                                {getIcon(page)}
-                                {page}
-                            </Button>
-                        ))}
-
+                        <Button component={Link} to={'/profile'}
+                                key={'Profile'}
+                                sx={{my: 2, color: 'white', display: 'block', paddingLeft: '1%'}}
+                        >
+                            {getIcon('Profile')}
+                            {'Profile'}
+                        </Button>
+                        <Button component={Link} to={'/profile/subgreddiits/all'}
+                                key={'Subgreddiit'}
+                                sx={{my: 2, color: 'white', display: 'block', paddingLeft: '1%'}}
+                        >
+                            {getIcon('Subgreddiit')}
+                            {'Subgreddiit'}
+                        </Button>
+                        <Button component={Link} to={'/profile/subgreddiits/my'}
+                                key={'My Subgreddiits'}
+                                sx={{my: 2, color: 'white', display: 'block', paddingLeft: '1%'}}
+                        >
+                            {getIcon('My Subgreddiits')}
+                            {'My Subgreddiits'}
+                        </Button>
+                        <Button component={Link} to={'/profile/saved'}
+                                key={'Saved'}
+                                sx={{my: 2, color: 'white', display: 'block', paddingLeft: '1%'}}
+                        >
+                            {getIcon('Saved')}
+                            {'Saved'}
+                        </Button>
                         <Button
                             key={"logout"}
                             sx={{my: 2, color: 'white', display: 'block', alignSelf: "right"}}
-                            onClick={() => {logout();navigate("/")}}
+                            onClick={() => {
+                                logout();
+                                navigate("/")
+                            }}
                         >
                             {getIcon("Logout")}
                             Logout

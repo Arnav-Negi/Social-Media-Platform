@@ -5,32 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
-      <change afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/auth/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/config/keys.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Post.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Report.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Subgreddiit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/api/follow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/api/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/routes/posts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/atoms/userinfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/utils/checkToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/download.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api/follow.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/follow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Signup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Signup/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Navbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Navbar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/SimpleDialog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/SimpleDialog/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/SimpleDialog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/FollowList/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
     </list>
@@ -80,7 +63,7 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/298/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -151,7 +134,11 @@
       <workItem from="1676264401208" duration="8532000" />
       <workItem from="1676275991776" duration="1161000" />
       <workItem from="1676279475824" duration="81000" />
-      <workItem from="1676279576762" duration="1063000" />
+      <workItem from="1676279576762" duration="8110000" />
+      <workItem from="1676371261031" duration="119000" />
+      <workItem from="1676371402454" duration="32000" />
+      <workItem from="1676371451252" duration="2070000" />
+      <workItem from="1676377142893" duration="12992000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

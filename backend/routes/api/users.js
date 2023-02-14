@@ -90,11 +90,10 @@ userRouter.post("/login",
 userRouter.get('/info',
     AuthenticateToken,
     (req, res) => {
-        const token = req.headers['x-auth-token'];
-        // parse token
-        const body = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-
-        User.findOne({_id: body.id}).populate('followers', 'username').populate('following', 'username').exec(function(err, user)  {
+        User.findOne({_id: req.user.id}).populate(
+            'followers', 'username').populate(
+                'following', 'username').populate(
+                'subgreddiits').exec(function(err, user)  {
             if (err) console.log(err);
             if (user) {
                 console.log(user)
@@ -113,7 +112,7 @@ userRouter.post('/update',
     body('age').isNumeric(),
     AuthenticateToken,
     (req, res) => {
-        User.updateOne({email: req.body.email}, req.body).then((err, docs) => {
+        User.updateOne({_id: req.user.id}, req.body).then((err, docs) => {
             if (err) return res.status(500).json({error: err});
             return res.status(200).send("Successfully updated.");
         });
