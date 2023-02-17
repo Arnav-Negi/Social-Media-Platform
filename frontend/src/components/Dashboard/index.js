@@ -8,6 +8,7 @@ import {setToken} from "../../utils/checkToken"
 import axios from "axios";
 import Auth from "../Auth";
 import MySubgreddiits from "./MySubgreddiits";
+import NewSubgreddiits from "./MySubgreddiits/NewSubgreddiits";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -22,11 +23,12 @@ export default function Dashboard() {
 
     if (user.username !== "")
         return (
-            <div>
+            <div className={"container h-screen w-screen"} >
                 <Navbar/>
-                <div className={"bg-orange-400 h-screen flex place-items-center justify-center"}>
+                <div className={"bg-orange-400 h-screen w-screen fixed flex place-items-center justify-center"} sx={{height:'93%'}}>
                     <Routes>
                         <Route path={"/subgreddiits/my"} element={<MySubgreddiits/>}/>
+                        <Route path={"/subgreddiits/new"} element={<NewSubgreddiits />} />
                         <Route path={"/"} element={<Userinfo />} />
                     </Routes>
                 </div>

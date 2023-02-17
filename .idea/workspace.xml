@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/download.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/Screenshot from 2023-02-16 00-15-24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/NewSubgreddiits/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/follow.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/follow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Subgreddiit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Navbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Navbar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/SimpleDialog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/FollowList/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +136,9 @@
       <workItem from="1676371402454" duration="32000" />
       <workItem from="1676371451252" duration="2070000" />
       <workItem from="1676377142893" duration="12992000" />
+      <workItem from="1676485781255" duration="7444000" />
+      <workItem from="1676623315513" duration="4685000" />
+      <workItem from="1676631670292" duration="13157000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

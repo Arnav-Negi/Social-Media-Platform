@@ -12,9 +12,7 @@ import axios from "axios";
 function App() {
     const theme = createTheme({
         palette: {mode: 'dark'},
-        components: {
-
-        }
+        components: {}
     });
     axios.defaults.baseURL = "http://localhost:5000"
     return (
@@ -22,8 +20,8 @@ function App() {
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
                     <Routes>
-                        <Route path={"/"} element={<Auth/>}/>
-                        <Route path={"/profile/*"} element={<Dashboard/>}/>
+                            <Route path={"/"} element={<Auth/>}/>
+                            <Route path={"/profile/*"} element={<Dashboard/>}/>
                     </Routes>
                 </BrowserRouter>
             </ThemeProvider>

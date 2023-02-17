@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
+const User = require('./User')
 
 const SGSchema = new Schema({
     name: {
@@ -33,6 +34,33 @@ const SGSchema = new Schema({
         ref: 'post'
     }
 });
+
+SGSchema.pre('save', function(next) {
+    User.updateOne({_id: this.moderator},
+        {
+            $push : {
+                subgreddiits: this._id
+            }
+        }).then((user) => console.log("User " + this.moderator + "updated")).catch(
+        err => console.log(err));
+
+    next();
+})
+
+SGSchema.pre('remove', function(next) {
+    User.updateOne({_id: this.moderator},
+        {
+            $pull : {
+                subgreddiits: this._id
+            }
+        }).then((user) => console.log("User " + this.moderator + "updated")).catch(
+            err => console.log(err)
+    );
+
+    next();
+})
+
+// TODO : implement cascade delete after making reports and posts.
 
 const Subgreddiit = mongoose.model("subgreddiit", SGSchema)
 
