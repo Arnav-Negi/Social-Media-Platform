@@ -5,6 +5,7 @@ import {
 export const userinfo = atom({
     key: 'userinfo',
     default: {
+        _id: '',
         firstname: '',
         lastname: '',
         email: '',

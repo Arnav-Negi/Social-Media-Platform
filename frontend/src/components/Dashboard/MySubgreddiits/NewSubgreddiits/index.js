@@ -26,12 +26,6 @@ export default function NewSubgreddiits(props) {
         bannedWords: ""
     });
 
-    useEffect(() => {
-        const result = setToken();
-        if (result !== 0) navigate("/");
-        axios.get("users/info").then((res) => setUser(res.data))
-    }, []);
-
     function Validate() {
         setValid(true)
         SubData.bannedWords.forEach((word) => {

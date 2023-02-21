@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/Screenshot from 2023-02-16 00-15-24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/NewSubgreddiits/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/atoms/SGinfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/AllSubgreddit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/SGNavbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Subgreddiit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/EditProfile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Subgreddiit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/atoms/userinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/atoms/userinfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/Signup/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/Signup/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/NewSubgreddiits/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/NewSubgreddiits/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Userinfo/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +79,11 @@
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="fg" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="start-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -138,7 +150,10 @@
       <workItem from="1676377142893" duration="12992000" />
       <workItem from="1676485781255" duration="7444000" />
       <workItem from="1676623315513" duration="4685000" />
-      <workItem from="1676631670292" duration="13157000" />
+      <workItem from="1676631670292" duration="13190000" />
+      <workItem from="1676888910362" duration="244000" />
+      <workItem from="1676969082471" duration="2802000" />
+      <workItem from="1677000574597" duration="15580000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

@@ -3,18 +3,14 @@ import FollowList from "../FollowList";
 import axios from "axios";
 import {useEffect} from "react";
 import {userinfo} from "../../../atoms/userinfo";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {setToken} from "../../../utils/checkToken";
 import {useRecoilState} from "recoil";
+import Button from "@mui/material/Button";
 
 export default function Userinfo() {
     const navigate = useNavigate();
     const [user, setUser] = useRecoilState(userinfo);
-
-    useEffect(() => {
-        const result = setToken();
-        if (result !== 0) navigate("/");
-    }, []);
 
     return (
         <TableContainer
@@ -133,6 +129,7 @@ export default function Userinfo() {
                     </TableRow>
                 </TableBody>
             </Table>
+            <Button component={Link} to={'/profile/edit'}>Edit user info</Button>
         </TableContainer>
     )
 }

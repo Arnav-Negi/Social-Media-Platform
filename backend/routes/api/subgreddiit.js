@@ -30,11 +30,13 @@ subgreddiitRouter.post('/',
             if (req.body.tags[i].indexOf(' ') >= 0) return res.status(400).send("Tags should be single words.");
         }
 
+        if (req.body.name.includes(' ')) res.status(400).send("Name should not contain spaces.");
+
         Subgreddiit.findOne({name: req.body.name}).then((sub) => {
             if (sub)
                 return res.status(400).send("Subgreddiit name already exists.");
         })
-        console.log( req.body.bannedWords);
+
         const newSub = new Subgreddiit({
             name: req.body.name,
             desc: req.body.desc,
@@ -45,19 +47,35 @@ subgreddiitRouter.post('/',
             posts: []
         });
 
-        newSub.save().then((sub) => console.log("Printing sub", sub)).catch((err) => console.log("Error: ", err));
+        newSub.save().then((sub) => {
+            console.log("Printing sub", sub);
+            res.status(200).json(sub);
+        }).catch((err) => console.log("Error: ", err));
 
         return res.status(400);
     });
 
 // All subgreddiits
-subgreddiitRouter.get('/',
+subgreddiitRouter.get('/all',
     authenticateToken,
     (req, res) => {
         const body = req.user;
 
         Subgreddiit.find().then((all) => {
             return res.status(200).json(all)
+        }).catch(err => console.log(err));
+
+        return res.status(400);
+    })
+
+subgreddiitRouter.get('/:id',
+    authenticateToken,
+    (req, res) => {
+        const body = req.user;
+        const id = req.params.id;
+
+        Subgreddiit.findOne({_id: id}).then((sub) => {
+            return res.status(200).json(sub)
         }).catch(err => console.log(err));
 
         return res.status(400);

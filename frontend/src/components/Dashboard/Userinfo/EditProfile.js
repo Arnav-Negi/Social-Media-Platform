@@ -1,49 +1,52 @@
-import { FormControl, TextField} from "@mui/material";
+import {FormControl, Paper, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import {useState} from "react";
 import axios from "axios";
+import {useRecoilState} from "recoil";
+import {userinfo} from "../../../atoms/userinfo";
+import {Link} from "react-router-dom";
 
-export default function Signup() {
+export default function EditProfile() {
+    const [text, setText] = useState("");
+    const [user, setUser] = useRecoilState(userinfo);
+
     const [SignUpData, setSignUpData] = useState(
         {
-            email : "",
-            username : "",
-            firstname : "",
-            lastname : "",
-            age : 0,
-            contact : 0,
-            password : ""
+            username : user.username,
+            firstname : user.firstname,
+            lastname : user.lastname,
+            age : user.age,
+            contact : user.contact
         }
     )
 
-    const [text, setText] = useState("");
-
-
     function handleSubmit() {
         console.log(SignUpData);
-        axios.post('/users/register', SignUpData).then((res) => {
-            setText("Sign in successful! You can now log in with the credentials")
+        axios.post('/users/update', SignUpData).then((res) => {
+            setText("Update successful!");
+            setUser({...user,  ...SignUpData})
         }).catch((err) => {
             console.log(err);
+            alert("Error: wrong input");
         });
     }
 
     return (
-        <div className={"flex relative h-full w-full items-center justify-center"} style={{height:"90%"}}>
+        <Paper elevation={2} className={"flex relative bg-black items-center justify-center"} sx={{padding:'5%'}}>
             <FormControl className={"font-light"}
-            onSubmit={handleSubmit}>
+                         onSubmit={handleSubmit}>
                 <Grid container id="name-grid">
                     <Grid item xs={6}>
                         <TextField variant={"outlined"} sx={{padding: "5%", width: "100%", flex: "grow"}}
-                                   id={"fname"} label={"First Name"}
+                                   id={"fname"} label={"First Name"} defaultValue={user.firstname}
                                    onChange={(e) => setSignUpData({...SignUpData, firstname: e.target.value})}>
                             F. Name
                         </TextField>
                     </Grid>
                     <Grid item xs={6}>
                         <TextField variant={"outlined"} sx={{padding: "5%", width: "100%", flex: "grow"}}
-                                   id={"lname"} label={"Last Name"}
+                                   id={"lname"} label={"Last Name"} defaultValue={user.lastname}
                                    onChange={(e) => setSignUpData({...SignUpData, lastname: e.target.value})}>
                             L. Name
                         </TextField>
@@ -51,38 +54,28 @@ export default function Signup() {
                 </Grid>
 
                 <TextField variant={"outlined"} sx={{padding: "3%"}}
-                           id={"username"} label={"Username"}
+                           id={"username"} label={"Username"} defaultValue={user.username}
                            onChange={(e) => setSignUpData({...SignUpData, username: e.target.value})}>
                     Username
                 </TextField>
-                <TextField variant={"outlined"} sx={{padding: "3%"}} type={"email"}
-                           id={"email"} label={"Email ID"}
-                           onChange={(e) => setSignUpData({...SignUpData, email: e.target.value})}>
-                    Email
-                </TextField>
                 <TextField variant={"outlined"} sx={{padding: "3%"}} type={"number"}
-                           id={"age"} label={"Age"}
+                           id={"age"} label={"Age"} defaultValue={user.age}
                            onChange={(e) => setSignUpData({...SignUpData, age: e.target.value})}>
                     Age
                 </TextField>
                 <TextField variant={"outlined"} sx={{padding: "3%"}} type={"number"}
-                           id={"contact"} label={"Contact"}
-                           onChange={(e) => setSignUpData({...SignUpData, contact: e.target.value})}>
+                           id={"contact"} label={"Contact"} defaultValue={user.contact}
+                           onChange={(e) => setSignUpData({...SignUpData, contact: (e.target.value)})}>
                     Contact
                 </TextField>
-                <TextField variant={"outlined"} sx={{padding: "3%"}} type={"password"}
-                           id={"password"} label={"Password"} helperText={text}
-                           onChange={(e) => setSignUpData({...SignUpData, password: e.target.value})}>
-                    Password
-                </TextField>
-                <Button type={"submit"}
-                        variant={"outlined"}
+                <Button type={"submit"} component={Link}
+                        variant={"outlined"} to={'/profile'}
                         sx={{margin:"6%"}}
                         onClick={handleSubmit}
-                        disabled={(SignUpData.username == "") || (SignUpData.password == "")}>
-                    Signup
+                        disabled={(SignUpData.username === "")}>
+                    Update
                 </Button>
             </FormControl>
-        </div>
+        </Paper>
     )
 }

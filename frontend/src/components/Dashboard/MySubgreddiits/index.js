@@ -4,7 +4,7 @@ import {userinfo} from "../../../atoms/userinfo";
 import {useEffect} from "react";
 import {setToken} from "../../../utils/checkToken";
 import axios from "axios";
-import {Card, CardContent, CardMedia, Typography} from "@mui/material";
+import {Card, CardContent, CardMedia, Table, TableCell, TableRow, Typography} from "@mui/material";
 import cardimg from "../../../assets/download.jpeg";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -15,15 +15,9 @@ export default function MySubgreddiits(props) {
     const [user, setUser] = useRecoilState(userinfo);
     const cardimg = require("../../../assets/download.jpeg");
 
-    useEffect(() => {
-        const result = setToken();
-        if (result !== 0) navigate("/");
-        axios.get("users/info").then((res) => setUser(res.data))
-    }, []);
-
     function deleteSub(sg) {
         axios.post('/subg/remove', {
-        name: sg.name
+            name: sg.name
         }).then((res) => {
             console.log("Sub deleted")
             console.log(sg)
@@ -39,40 +33,56 @@ export default function MySubgreddiits(props) {
                         sx={{
                             maxHeight: '30%',
                             backgroundColor: 'black',
-                            transform: 'translate(50%, 100%)'
+                            transform: 'translate(40%, 100%)'
                         }}>
                     <Typography color={'text.secondary'} fontSize={20}>CREATE NEW SUBG</Typography>
                 </Button>
             </div>
-            <div className={'h-full w-full flex'}>
+            <div className={'h-full w-full flex justify-center m-0'}>
                 {user.subgreddiits.map((sg) => (
-                    <Card sx={{width: '25%', height: '40%', marginLeft: '5%'}}>
-                        <CardMedia sx={{width: '100%', height: '60%', backgroundImage: `url(${cardimg})`}}
+                    <Card sx={{width: '40%', height: '70%', marginLeft: '5%', marginRight: '5%'}}>
+                        <CardMedia sx={{width: '100%', height: '40%', backgroundImage: `url(${cardimg})`}}
                                    title={'cardimg'}></CardMedia>
                         <CardContent sx={{
-                            height: '40%'
+                            height: '60%'
                         }}>
-                            <Typography sx={{height: '20%'}} noWrap={true}>
+                            <Typography sx={{height: '10%'}} noWrap={true}>
                                 g/{sg.name}
                             </Typography>
                             <Typography variant={'body2'} paragraph={true} color={'text.secondary'}
-                                        sx={{ overflow: 'auto', height:'40%'}}>
+                                        sx={{overflow: 'auto', height: '20%'}}>
                                 {sg.desc}
                             </Typography>
-                            <div className="flex items-end" style={{height: '40%'}}>
-                                <Grid item direction="row"
-                                      justifyContent="center"
-                                      alignItems="flex-end" xs={6}>
-                                    <Button component={Link} variant={'outlined'} color={'success'}>
-                                        <Typography color={'text.secondary'} fontSize={20}> OPEN </Typography>
-                                    </Button>
-                                </Grid>
-                                <Grid item direction="row"
-                                      justifyContent="center"
-                                      alignItems="flex-end" xs={6}>
-                                    <Button variant={'outlined'} color={'error'} onClick={() => deleteSub(sg)}>
-                                        <Typography color={'text.secondary'} fontSize={20}> DELETE </Typography>
-                                    </Button>
+                            <Table>
+                                <TableRow>
+                                    <TableCell align={'right'}>Number of posts</TableCell>
+                                    <TableCell align={'right'}>{sg.posts.length}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell align={'right'}>Number of users</TableCell>
+                                    <TableCell align={'right'}>{sg.members.length}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell align={'right'}>Banned Words</TableCell>
+                                    <TableCell align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
+                                </TableRow>
+                            </Table>
+                            <div className="flex items-end" style={{height: '20%'}}>
+                                <Grid container direction={'rows'}>
+                                    <Grid item
+                                          justifyContent="center"
+                                          alignItems="flex-end" xs={6}>
+                                        <Button component={Link} to={`/g/${sg._id}`} variant={'outlined'} color={'success'}>
+                                            <Typography color={'text.secondary'} fontSize={20}> OPEN </Typography>
+                                        </Button>
+                                    </Grid>
+                                    <Grid item
+                                          justifyContent="center"
+                                          alignItems="flex-end" xs={6}>
+                                        <Button variant={'outlined'} color={'error'} onClick={() => deleteSub(sg)}>
+                                            <Typography color={'text.secondary'} fontSize={20}> DELETE </Typography>
+                                        </Button>
+                                    </Grid>
                                 </Grid>
                             </div>
                         </CardContent>

@@ -1,14 +1,16 @@
 import Navbar from "./Navbar";
 import Userinfo from "./Userinfo";
-import {useEffect, useState} from "react";
-import {Route, Routes, useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "react";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import {useRecoilState} from "recoil";
 import {userinfo} from "../../atoms/userinfo";
 import {setToken} from "../../utils/checkToken"
 import axios from "axios";
-import Auth from "../Auth";
 import MySubgreddiits from "./MySubgreddiits";
 import NewSubgreddiits from "./MySubgreddiits/NewSubgreddiits";
+import Subgreddiit from "./Subgreddiit/Subgreddiit"
+import EditProfile from "./Userinfo/EditProfile";
+import AllSubgreddit from "./Subgreddiit/AllSubgreddit";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -25,11 +27,14 @@ export default function Dashboard() {
         return (
             <div className={"container h-screen w-screen"} >
                 <Navbar/>
-                <div className={"bg-orange-400 h-screen w-screen fixed flex place-items-center justify-center"} sx={{height:'93%'}}>
+                <div className={"bg-orange-400 h-screen w-screen fixed flex place-items-center justify-center"}>
                     <Routes>
-                        <Route path={"/subgreddiits/my"} element={<MySubgreddiits/>}/>
-                        <Route path={"/subgreddiits/new"} element={<NewSubgreddiits />} />
-                        <Route path={"/"} element={<Userinfo />} />
+                        <Route path={"/profile/subgreddiits/my"} element={<MySubgreddiits/>}/>
+                        <Route path={"/profile/subgreddiits/new"} element={<NewSubgreddiits />} />
+                        <Route path={"/profile/subgreddiits/all"} element={<AllSubgreddit />} />
+                        <Route path={"/profile"} element={<Userinfo/>} />
+                        <Route path={"/profile/edit"} element={<EditProfile />} />
+                        <Route path={"/g/:id/*"} element={<Subgreddiit />} />
                     </Routes>
                 </div>
             </div>

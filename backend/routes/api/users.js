@@ -99,22 +99,30 @@ userRouter.get('/info',
                 console.log(user)
                 return res.status(200).json(user);
             } else {
-                console.log("uhoh.")
-                return res.status(404).send();
+                return res.status(404).send("user not found.");
             }
         });
     });
 
 userRouter.post('/update',
+    AuthenticateToken,
     body('username').isLength({min: 1, max: 255}),
     body('password').isLength({min: 4, max: 50}),
     body('contact').isNumeric(),
     body('age').isNumeric(),
-    AuthenticateToken,
     (req, res) => {
-        User.updateOne({_id: req.user.id}, req.body).then((err, docs) => {
-            if (err) return res.status(500).json({error: err});
-            return res.status(200).send("Successfully updated.");
+        User.findOne({_id: req.user.id}).then((user) => {
+
+            if (!user) return res.status(404);
+
+            user._doc = {...user._doc,  ...req.body};
+            user.save().then((user)=> {
+                return res.status(200).json(user)
+            }).catch(
+                err=>{return res.status(500).json(err)}
+            );
+        }).catch(err=> {
+            return res.status(400).json(err)
         });
     })
 

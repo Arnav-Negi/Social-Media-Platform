@@ -21,7 +21,7 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                             <Route path={"/"} element={<Auth/>}/>
-                            <Route path={"/profile/*"} element={<Dashboard/>}/>
+                            <Route path={"/*"} element={<Dashboard/>}/>
                     </Routes>
                 </BrowserRouter>
             </ThemeProvider>
