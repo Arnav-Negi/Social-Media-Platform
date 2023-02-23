@@ -33,7 +33,7 @@ export default function Subgreddiit() {
                 {/*<Route path={"/profile/subgreddiits/my"} element={<MySubgreddiits/>}/>*/}
                 {/*<Route path={"/"} element={<NewSubgreddiits/>}/>*/}
                 {/*<Route path={"/"} element={<Userinfo/>}/>*/}
-                <Route path={"/"} element={<Subgreddiit/>}/>
+                {/*<Route path={"/*"} element={<Subgreddiit/>}/>*/}
             </Routes>
         </div>
     )

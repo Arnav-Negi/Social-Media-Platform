@@ -4,7 +4,7 @@ import {userinfo} from "../../../atoms/userinfo";
 import {useEffect} from "react";
 import {setToken} from "../../../utils/checkToken";
 import axios from "axios";
-import {Card, CardContent, CardMedia, Table, TableCell, TableRow, Typography} from "@mui/material";
+import {Card, CardContent, CardMedia, Table, TableCell, TableBody, TableRow, Typography} from "@mui/material";
 import cardimg from "../../../assets/download.jpeg";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -27,7 +27,7 @@ export default function MySubgreddiits(props) {
     }
 
     return (
-        <div className={'h-full w-full'}>
+        <div className={'min-h-screen w-full'}>
             <div className={'container flex justify-center w-full h-1/12'} style={{margin: '5%'}}>
                 <Button variant={'contained'} color={'success'} component={Link} to={'/profile/subgreddiits/new'}
                         sx={{
@@ -38,10 +38,10 @@ export default function MySubgreddiits(props) {
                     <Typography color={'text.secondary'} fontSize={20}>CREATE NEW SUBG</Typography>
                 </Button>
             </div>
-            <div className={'h-full w-full flex justify-center m-0'}>
+            <div className={'h-full w-full flex flex-wrap justify-center m-0'}>
                 {user.subgreddiits.map((sg) => (
-                    <Card sx={{width: '40%', height: '70%', marginLeft: '5%', marginRight: '5%'}}>
-                        <CardMedia sx={{width: '100%', height: '40%', backgroundImage: `url(${cardimg})`}}
+                    <Card sx={{width: '30%', height: '70%', marginLeft: '5%', marginRight: '5%', marginTop: '5%'}}>
+                        <CardMedia sx={{width: '100%', height: '0%', paddingTop: '56.25%', backgroundImage: `url(${cardimg})`}}
                                    title={'cardimg'}></CardMedia>
                         <CardContent sx={{
                             height: '60%'
@@ -54,25 +54,29 @@ export default function MySubgreddiits(props) {
                                 {sg.desc}
                             </Typography>
                             <Table>
-                                <TableRow>
-                                    <TableCell align={'right'}>Number of posts</TableCell>
-                                    <TableCell align={'right'}>{sg.posts.length}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell align={'right'}>Number of users</TableCell>
-                                    <TableCell align={'right'}>{sg.members.length}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell align={'right'}>Banned Words</TableCell>
-                                    <TableCell align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
-                                </TableRow>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell align={'left'}>Number of posts</TableCell>
+                                        <TableCell align={'right'}>{sg.posts.length}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align={'left'}>Number of users</TableCell>
+                                        <TableCell align={'right'}>{sg.members.length}</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell align={'left'}>Banned Words</TableCell>
+                                        <TableCell
+                                            align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
+                                    </TableRow>
+                                </TableBody>
                             </Table>
                             <div className="flex items-end" style={{height: '20%'}}>
                                 <Grid container direction={'rows'}>
                                     <Grid item
                                           justifyContent="center"
                                           alignItems="flex-end" xs={6}>
-                                        <Button component={Link} to={`/g/${sg._id}`} variant={'outlined'} color={'success'}>
+                                        <Button component={Link} to={`/g/${sg._id}`} variant={'outlined'}
+                                                color={'success'}>
                                             <Typography color={'text.secondary'} fontSize={20}> OPEN </Typography>
                                         </Button>
                                     </Grid>

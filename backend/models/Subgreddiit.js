@@ -32,6 +32,18 @@ const SGSchema = new Schema({
     posts: {
         type: [Schema.Types.ObjectId],
         ref: 'post'
+    },
+    createdAt: {
+        type: String,
+        required: true
+    },
+    joinReqs: {
+        type: [Schema.Types.ObjectId],
+        ref: 'user'
+    },
+    banned: {
+        type: [Schema.Types.ObjectId],
+        ref: 'user'
     }
 });
 

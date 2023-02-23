@@ -12,6 +12,9 @@ export const SGinfo = atom({
         bannedWords: [],
         moderator: undefined,
         members: [],
-        posts: []
+        posts: [],
+        banned: [],
+        joinReqs: [],
+        createdAt: ""
     }
 })

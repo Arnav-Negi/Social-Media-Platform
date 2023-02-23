@@ -6,6 +6,7 @@ const express = require('express');
 const subgreddiitRouter = express.Router();
 const authenticateToken = require('../../auth/auth');
 const {body, validationResult} = require("express-validator");
+const moment = require("moment");
 
 subgreddiitRouter.post('/',
     authenticateToken,
@@ -44,7 +45,10 @@ subgreddiitRouter.post('/',
             bannedWords: req.body.bannedWords,
             moderator: body.id,
             members: [body.id],
-            posts: []
+            posts: [],
+            createdAt: moment().format("YYYMMDD"),
+            joinReqs: [],
+            banned: []
         });
 
         newSub.save().then((sub) => {
@@ -93,6 +97,64 @@ subgreddiitRouter.post('/remove',
             sub.remove().then((sub) => {
                 return res.status(200).json(sub);
             }).catch(err => console.log(err));
+        })
+    })
+
+subgreddiitRouter.post('/join',
+    authenticateToken,
+    (req, res) => {
+        const userId = req.user.id;
+        Subgreddiit.findOne({_id: req.body.sgID}).then((sg) => {
+            if (!sg) return res.status(404).send("SG not found.");
+
+            const index = sg.members.indexOf(userId);
+            if (index !== -1) {
+                return res.status(400).send("Already a member.");
+            } else {
+                if (sg.banned.includes(userId)) return res.status(400).send("User is banned from subgreddiit.")
+                if (!sg.joinReqs.includes(userId)) {
+                    Subgreddiit.updateOne({_id: req.body.sgID},
+                        {
+                            $push: {joinReqs: userId}
+                        }).then(sg => {
+                        return res.status(200).json(sg);
+                    }).catch(err => {
+                        return res.status(500).json(err);
+                    });
+                } else
+                    return res.status(400).send("Join request already sent.");
+            }
+        }).catch(err => {
+            return res.status(500).json(err);
+        })
+    })
+
+subgreddiitRouter.post('/leave',
+    authenticateToken,
+    (req, res) => {
+        const userId = req.user.id;
+        Subgreddiit.findOne({_id: req.body.sgID}).then((sg) => {
+            if (!sg) return res.status(404).send("SG not found.");
+
+            const index = sg.members.indexOf(userId);
+            if (index === -1) {
+                return res.status(400).send("Not a member.");
+            } else {
+                if (sg.moderator == userId) return res.status(400).send("Mods cant leave subgreddiits.");
+
+                Subgreddiit.updateOne({_id: req.body.sgID},
+                    {
+                        $pull: {members: userId},
+                        $push: {banned: userId}
+                    }).then(sg => {
+                    return res.status(200).json(sg);
+                }).catch(err => {
+                    return res.status(500).json(err)
+                });
+                return res.status(400).send("Join request already sent.");
+            }
+        }).catch(err => {
+            return res.status(500).json(err);
         })
     })
 
