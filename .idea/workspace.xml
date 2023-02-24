@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
+      <change afterPath="$PROJECT_DIR$/backend/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx/local.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/atoms/userinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/atoms/userinfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/keys.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/checkToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/checkToken.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +58,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/arnav/courses/4/dass/ass-1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/arnav/courses/4/dass/ass-1/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -64,6 +72,11 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/frontend" />
+      <recent name="$PROJECT_DIR$/nginx" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/routes/api" />
       <recent name="$PROJECT_DIR$/" />
@@ -153,6 +166,11 @@
       <workItem from="1677127723812" duration="1695000" />
       <workItem from="1677156298527" duration="11689000" />
       <workItem from="1677216479108" duration="6942000" />
+      <workItem from="1677259560160" duration="67000" />
+      <workItem from="1677260290668" duration="6189000" />
+      <workItem from="1677267274392" duration="1084000" />
+      <workItem from="1677268877242" duration="2938000" />
+      <workItem from="1677272985978" duration="927000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

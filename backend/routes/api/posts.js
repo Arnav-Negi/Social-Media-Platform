@@ -43,13 +43,19 @@ postsRouter.post('/upvote',
     authenticateToken,
     (req, res) => {
         const userid = req.user.id;
-
+        const action = req.user.action; //upvote / downvote
         Post.findOne({_id: req.body.post}).populate('subgreddiit', 'members').then((post) => {
             if (!post) return res.status(400).send("Post not found.");
             if (!post.subgreddiit.members.includes(userid)) return res.status(400).send(
                 "User is not part of subgreddiit."
             );
+            if (action === "upvote") {
 
+            }
+            else if (action === "downvote") {
+
+            }
+            else return res.status(400).send("")
             const index = post.upvoteUsers.indexOf(userid);
             if (index === -1) {
                 Post.updateOne({_id: post._id}, {

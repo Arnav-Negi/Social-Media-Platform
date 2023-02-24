@@ -8,13 +8,17 @@ import {
 } from 'recoil';
 import axios from "axios";
 
-
 function App() {
     const theme = createTheme({
         palette: {mode: 'dark'},
         components: {}
     });
-    axios.defaults.baseURL = "http://localhost:5000"
+
+    axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+    axios.defaults.headers = {
+        "Content-type": "application/json"
+    }
+
     return (
         <RecoilRoot>
             <ThemeProvider theme={theme}>

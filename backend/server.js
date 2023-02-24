@@ -11,6 +11,7 @@ const corsOptions = {
     exposedHeaders: "x-auth-token"
 }
 app.use(cors(corsOptions));
+app.options('*', cors());
 
 const userRouter = require('./routes/api/users')
 app.use('/users', userRouter);
@@ -21,16 +22,14 @@ app.use('/subg', subgreddiitRouter);
 const postsRouter = require('./routes/api/posts')
 app.use('/posts', postsRouter);
 
-// MongoDB uri
-const db = require('./config/keys').mongoURL
-
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-mongoose.connect(db).then(() => console.log("Connected to MongoDB !")).catch((err) => console.log(err))
-
-// Listen to the port
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+mongoose.connect(process.env.mongoURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(()=> {
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+}).catch(err => console.log(err));
 
 //test routes
 app.get('/posts', authenticateToken, (req, res) => {

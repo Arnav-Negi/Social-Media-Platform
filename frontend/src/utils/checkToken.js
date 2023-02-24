@@ -6,7 +6,7 @@ const setToken = () => {
         token = localStorage.getItem("accessToken");
     } catch { return 1;}
     if (token === null) return 1;
-    axios.defaults.headers.common["x-auth-token"] = token;
+    axios.defaults.headers["x-auth-token"] = token;
     return 0;
 }
 
