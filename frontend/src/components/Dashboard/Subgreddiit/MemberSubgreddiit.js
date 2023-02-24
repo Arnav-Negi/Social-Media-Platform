@@ -86,7 +86,7 @@ export default function MemberSubgreddiit() {
                                 bgcolor: 'background.paper',
                                 minHeight: '200px'
                             }}>
-                                <PostButtons/>
+                                <PostButtons post={post}/>
                                 <ListItemText
                                     primary={post.text}
                                 />

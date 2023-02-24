@@ -14,6 +14,7 @@ export const userinfo = atom({
         contact: undefined,
         followers: [],
         following: [],
-        subgreddiits: []
+        subgreddiits: [],
+        savedPosts: []
     }
 })

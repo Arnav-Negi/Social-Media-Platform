@@ -48,6 +48,11 @@ const UserSchema = new Schema({
         type: [Schema.Types.ObjectId],
         default: [],
         ref: 'subgreddiit'
+    },
+    savedPosts: {
+        type: [Schema.Types.ObjectId],
+        default: [],
+        ref: 'post'
     }
 });
 
