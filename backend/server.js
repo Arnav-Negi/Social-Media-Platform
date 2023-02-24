@@ -18,6 +18,8 @@ const followRouter = require('./routes/api/follow')
 app.use('/follow', followRouter);
 const subgreddiitRouter = require('./routes/api/subgreddiit')
 app.use('/subg', subgreddiitRouter);
+const postsRouter = require('./routes/api/posts')
+app.use('/posts', postsRouter);
 
 // MongoDB uri
 const db = require('./config/keys').mongoURL

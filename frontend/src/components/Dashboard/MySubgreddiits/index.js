@@ -66,7 +66,7 @@ export default function MySubgreddiits(props) {
                                     <TableRow>
                                         <TableCell align={'left'}>Banned Words</TableCell>
                                         <TableCell
-                                            align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
+                                            align={'right'}>{sg.bannedWords.join(', ')}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>

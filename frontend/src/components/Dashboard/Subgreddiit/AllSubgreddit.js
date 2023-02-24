@@ -226,7 +226,7 @@ export default function AllSubgreddit() {
                                     <TableRow>
                                         <TableCell align={'left'}>Banned Words</TableCell>
                                         <TableCell
-                                            align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
+                                            align={'right'}>{sg.bannedWords.join(', ')}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>
@@ -260,8 +260,7 @@ export default function AllSubgreddit() {
                               marginLeft: '5%',
                               marginRight: '5%',
                               marginTop: '5%'
-                          }}
-                          component={Link} to={`/g/${sg._id}/member`}>
+                          }}>
                         <CardContent sx={{
                             height: '100%'
                         }}>
@@ -285,7 +284,7 @@ export default function AllSubgreddit() {
                                     <TableRow>
                                         <TableCell align={'left'}>Banned Words</TableCell>
                                         <TableCell
-                                            align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
+                                            align={'right'}>{sg.bannedWords.join(', ')}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>

@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/api/posts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Subgreddiit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Post.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/atoms/SGinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/atoms/SGinfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/NewPost/NewPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/NewSubgreddiits/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/NewSubgreddiits/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/AllSubgreddit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/AllSubgreddit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Subgreddiit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +63,14 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/298/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/routes/api" />
       <recent name="$PROJECT_DIR$/" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/public" />
@@ -157,6 +155,9 @@
       <workItem from="1677042034282" duration="3409000" />
       <workItem from="1677070224283" duration="16056000" />
       <workItem from="1677103559844" duration="7675000" />
+      <workItem from="1677127723812" duration="1695000" />
+      <workItem from="1677156298527" duration="11689000" />
+      <workItem from="1677216479108" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

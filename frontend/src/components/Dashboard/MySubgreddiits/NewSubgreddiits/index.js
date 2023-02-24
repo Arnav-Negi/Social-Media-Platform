@@ -50,7 +50,7 @@ export default function NewSubgreddiits(props) {
 
         console.log(SubData)
         axios.post('/subg', SubData).then((res) => {
-            setText("New Subgreddiit created !");
+            setText("NewPost Subgreddiit created !");
             axios.get("users/info").then((res) => setUser(res.data)).catch(err => console.log(err));
         }).catch(err => console.log(err))
         setSubData({

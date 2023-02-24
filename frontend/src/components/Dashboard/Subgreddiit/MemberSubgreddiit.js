@@ -1,7 +1,7 @@
 import {
     Card,
     CardContent,
-    CardMedia,
+    CardMedia, List, ListItem, ListItemButton, ListItemText,
     Paper,
     Table,
     TableBody,
@@ -10,18 +10,18 @@ import {
     TableRow,
     Typography
 } from "@mui/material";
-import FollowList from "../FollowList";
 import axios from "axios";
 import {useEffect} from "react";
 import {userinfo} from "../../../atoms/userinfo";
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {setToken} from "../../../utils/checkToken";
 import {useRecoilState} from "recoil";
 import Button from "@mui/material/Button";
 import {SGinfo} from "../../../atoms/SGinfo";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import cardimg from "../../../assets/download.jpeg";
-import Grid from "@mui/material/Grid";
+import NewPost from "./NewPost/NewPost";
+import PostButtons from "./PostButtons/PostButtons";
+
 
 export default function MemberSubgreddiit() {
     const [user, setUser] = useRecoilState(userinfo);
@@ -35,12 +35,14 @@ export default function MemberSubgreddiit() {
         }).catch(err => console.log(err));
     }, []);
 
+
     return (
         <Grid2 container sx={{minHeight: '100%', width: '100%'}}>
             <Grid2 item sx={{width: '30%'}} className={'flex h-full justify-center'}>
                 <Card sx={{width: '100%', height: '100%', marginLeft: '5%', marginRight: '5%', marginTop: '5%'}}>
-                    <CardMedia sx={{width: '100%', height: '0%', paddingTop: '56.25%', backgroundImage: `url(${cardimg})`}}
-                               title={'cardimg'}></CardMedia>
+                    <CardMedia
+                        sx={{width: '100%', height: '0%', paddingTop: '56.25%', backgroundImage: `url(${cardimg})`}}
+                        title={'cardimg'}></CardMedia>
                     <CardContent sx={{
                         height: '60%'
                     }}>
@@ -64,15 +66,34 @@ export default function MemberSubgreddiit() {
                                 <TableRow>
                                     <TableCell align={'left'}>Banned Words</TableCell>
                                     <TableCell
-                                        align={'right'}>{sg.bannedWords.map((word) => word + ",")}</TableCell>
+                                        align={'right'}>{sg.bannedWords.join(', ')}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
                     </CardContent>
                 </Card>
             </Grid2>
-            <Grid2 item sx={{width: '70%'}} className={'flex h-full justify-center'}>
-                <Typography> Right</Typography>
+            <Grid2 item sx={{width: '70%'}} className={'flex-col items-center justify-center'}>
+                <NewPost/>
+                <List sx={{width: '100%', color: 'white'}}>
+                    {/*TODO Display posts*/}
+                    {sg.posts.map(post => {
+                        return (
+                            <ListItem sx={{
+                                display: 'flex',
+                                width: '95%',
+                                margin: '1%',
+                                bgcolor: 'background.paper',
+                                minHeight: '200px'
+                            }}>
+                                <PostButtons/>
+                                <ListItemText
+                                    primary={post.text}
+                                />
+                            </ListItem>
+                        )
+                    })}
+                </List>
             </Grid2>
         </Grid2>
     )

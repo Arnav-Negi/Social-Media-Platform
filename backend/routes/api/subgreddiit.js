@@ -78,7 +78,7 @@ subgreddiitRouter.get('/:id',
         const body = req.user;
         const id = req.params.id;
 
-        Subgreddiit.findOne({_id: id}).then((sub) => {
+        Subgreddiit.findOne({_id: id}).populate('posts').then((sub) => {
             return res.status(200).json(sub)
         }).catch(err => console.log(err));
 
