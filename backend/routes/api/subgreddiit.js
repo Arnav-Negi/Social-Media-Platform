@@ -78,7 +78,13 @@ subgreddiitRouter.get('/:id',
         const body = req.user;
         const id = req.params.id;
 
-        Subgreddiit.findOne({_id: id}).populate('posts').then((sub) => {
+        Subgreddiit.findOne({_id: id}).populate({
+            path: 'posts',
+            populate: {
+                path: 'poster',
+                model: 'user'
+            }
+        }).populate('members').populate('joinReqs').then((sub) => {
             return res.status(200).json(sub)
         }).catch(err => console.log(err));
 
@@ -156,6 +162,48 @@ subgreddiitRouter.post('/leave',
         }).catch(err => {
             return res.status(500).json(err);
         })
+    })
+
+subgreddiitRouter.post('/resolve',
+    authenticateToken,
+    (req, res) => {
+        const userid = req.user.id;
+        Subgreddiit.findOne({_id: req.body.subgreddiit}).then(sg => {
+            if (sg.moderator != userid) {
+                return res.status(400).send("Not a moderator.");
+            }
+
+            if (!sg.joinReqs.includes(req.body.joining)) return res.status(400).send("User has not requested to join.");
+
+            if (req.body.action === "accept") {
+                Subgreddiit.updateOne({_id: req.body.subgreddiit}, {
+                    $pull: {
+                        joinReqs: req.body.joining
+                    },
+                    $push: {
+                        members: req.body.joining
+                    }
+                }).then(sg => {
+                    return res.status(200).json(sg);
+                }).catch(err => {
+                    return res.status(400).json(err);
+                })
+            }
+            else if (req.body.action === "reject") {
+                Subgreddiit.updateOne({_id: req.body.subgreddiit}, {
+                    $pull: {
+                        joinReqs: req.body.joining
+                    }
+                }).then(sg => {
+                    return res.status(200).json(sg);
+                }).catch(err => {
+                    return res.status(400).json(err);
+                })
+            }
+            else return res.status(400).send("Unidentified action");
+        }).catch(err => {
+            return res.status(400).json(err);
+        });
     })
 
 module.exports = subgreddiitRouter;

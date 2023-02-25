@@ -94,8 +94,14 @@ userRouter.get('/info',
         User.findOne({_id: req.user.id}).populate(
             'followers', 'username').populate(
                 'following', 'username').populate(
-                'subgreddiits').populate(
-                'savedPosts').exec(function(err, user)  {
+                'subgreddiits').populate({
+            path: 'savedPosts',
+            populate: {
+                path: 'poster',
+                model: 'user'
+            }
+        })
+            .exec(function(err, user)  {
             if (err) console.log(err);
             if (user) {
                 console.log(user)
@@ -131,11 +137,10 @@ userRouter.post('/update',
 userRouter.post('/save',
     AuthenticateToken,
     (req, res) => {
-        // TODO save post
         const userid = req.user.id;
         Post.findOne({_id: req.body.post}).then(post => {
-            User.findOne({_id: userid}).then(user=> {
-                if (user.savedPosts.includes(req.body.post)) {
+            User.findOne({_id: userid}).then(user => {
+                if (!user.savedPosts.includes(req.body.post)) {
                     User.updateOne({_id: userid}, {
                         $push: {
                             savedPosts: req.body.post
@@ -160,9 +165,8 @@ userRouter.post('/save',
             }).catch(err => {
                 return res.status(500).json(err);
             })
-
         }).catch(err => {
-            return res.status(500).json(err);
+            return res.status(400).json(err);
         })
     });
 

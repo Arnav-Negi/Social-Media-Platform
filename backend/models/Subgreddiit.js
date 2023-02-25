@@ -44,6 +44,11 @@ const SGSchema = new Schema({
     banned: {
         type: [Schema.Types.ObjectId],
         ref: 'user'
+    },
+    blocked: {
+        type: [Schema.Types.ObjectId],
+        ref: 'user',
+        default: []
     }
 });
 
