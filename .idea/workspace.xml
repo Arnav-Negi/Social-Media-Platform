@@ -5,19 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
-      <change afterPath="$PROJECT_DIR$/backend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/local.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/api/reports.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/NewReport/NewReport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/keys.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Report.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Report.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Subgreddiit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/atoms/SGinfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/atoms/SGinfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/MySubgreddiits/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/SavedPosts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/SavedPosts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/JoinReqs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/JoinReqs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/MemberSubgreddiit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/NewPost/NewComment.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/NewPost/NewComment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/NewPost/NewPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/NewPost/NewPost.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Reports/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Reports/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Stats/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Stats/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Subgreddiit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Users/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Users/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/utils/checkToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/checkToken.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +76,7 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/298/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -90,7 +100,10 @@
       <command value="fg" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start-dev">
+    <configuration name="PostButtons.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" working-dir="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons">
+      <method v="2" />
+    </configuration>
     <configuration name="start-dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/backend/package.json" />
       <command value="run" />
@@ -104,6 +117,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start-dev" />
+        <item itemvalue="Node.js.PostButtons.js" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +184,9 @@
       <workItem from="1677260290668" duration="6189000" />
       <workItem from="1677267274392" duration="1084000" />
       <workItem from="1677268877242" duration="2938000" />
-      <workItem from="1677272985978" duration="927000" />
+      <workItem from="1677272985978" duration="12029000" />
+      <workItem from="1677294989775" duration="17019000" />
+      <workItem from="1677329858926" duration="11458000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>

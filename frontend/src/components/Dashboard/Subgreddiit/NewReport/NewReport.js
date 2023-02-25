@@ -8,11 +8,12 @@ import {userinfo} from "../../../../atoms/userinfo";
 import {SGinfo} from "../../../../atoms/SGinfo"
 
 
-export default function NewPost() {
+export default function NewReport(props) {
     const [open, setOpen] = useState(false);
     const [user, setUser] = useRecoilState(userinfo);
     const [sg, setSg] = useRecoilState(SGinfo);
     const [formData, setFormData] = useState("");
+    const {post} = props.post;
     const handleClose = () => {
         setOpen(false);
     };
@@ -22,26 +23,11 @@ export default function NewPost() {
     };
 
     const handleSubmit = () => {
-        let censored = false;
-        let wordlist = formData.toLowerCase().split(" ,.;");
-        sg.bannedWords.forEach(function(word){
-            if (wordlist.indexOf(word.toLowerCase()) !== -1)
-                censored = true;
-        })
-        if (censored) alert("Your post contains words that are banned in this subgreddiit.")
-        axios.post('/posts', {
-            text: formData,
-            subgreddiit: sg._id
+        axios.post('/report', {
+            concern: formData,
+            post: props.post._id
         }).then((res) => {
-            console.log(res.data);
-            alert("Post submitted.");
-            setSg({...sg,  posts: [...sg.posts, {
-                text: formData,
-                    poster: user,
-                    subgreddiits: sg._id,
-                    upvoteUsers: [],
-                    comments: []
-                }]})
+            alert("Report submitted.");
             setOpen(false);
         }).catch(err => {
             console.log(err);
@@ -56,14 +42,16 @@ export default function NewPost() {
                     onClick={handleClickOpen}
                     sx={{
                         minHeight: '30%',
+                        marginTop: '5%',
                         backgroundColor: 'black'
                     }}>
-                <Typography color={'text.secondary'} fontSize={20}>CREATE NEW POST</Typography>
+                <Typography color={'text.secondary'} fontSize={14}>REPORT</Typography>
             </Button>
-            <Dialog onClose={handleClose} open={open} fullWidth={true} >
-                <Typography variant={'h6'} sx={{marginLeft: '5%',marginRight: '5%',marginTop: '5%'}}>Enter post content</Typography>
+            <Dialog onClose={handleClose} open={open} fullWidth={true}>
+                <Typography variant={'h6'} sx={{marginLeft: '5%', marginRight: '5%', marginTop: '5%'}}>
+                    Enter reason for report</Typography>
                 <TextField value={formData} onChange={(e) => setFormData(e.target.value)}
-                multiline={true} rows={5} sx={{margin: '5%'}}
+                           multiline={true} rows={5} sx={{margin: '5%'}}
                 >
                 </TextField>
                 <Button variant={'contained'} color={'success'}
@@ -72,7 +60,7 @@ export default function NewPost() {
                             minHeight: '30%',
                             backgroundColor: 'black'
                         }}>
-                    <Typography color={'text.secondary'} fontSize={20}>CREATE</Typography>
+                    <Typography color={'text.secondary'} fontSize={20}>Send report</Typography>
                 </Button>
             </Dialog>
         </div>

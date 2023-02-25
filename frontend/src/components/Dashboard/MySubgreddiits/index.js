@@ -75,7 +75,7 @@ export default function MySubgreddiits(props) {
                                     <Grid item
                                           justifyContent="center"
                                           alignItems="flex-end" xs={6}>
-                                        <Button component={Link} to={`/g/${sg._id}`} variant={'outlined'}
+                                        <Button component={Link} to={`/g/${sg._id}/users`} variant={'outlined'}
                                                 color={'success'}>
                                             <Typography color={'text.secondary'} fontSize={20}> OPEN </Typography>
                                         </Button>

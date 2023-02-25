@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const User = require('./User')
+const Post = require('./Post')
+const Report = require('./Report')
 
 const SGSchema = new Schema({
     name: {
@@ -49,6 +51,11 @@ const SGSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'user',
         default: []
+    },
+    reports: {
+        type: [Schema.Types.ObjectId],
+        ref: 'report',
+        default: []
     }
 });
 
@@ -74,10 +81,12 @@ SGSchema.pre('remove', function(next) {
             err => console.log(err)
     );
 
+    Post.find({subgreddiit: this._id}).deleteMany();
+
+    Report.find({subgreddiit: this._id}).deleteMany();
+
     next();
 })
-
-// TODO : implement cascade delete after making reports and posts.
 
 const Subgreddiit = mongoose.model("subgreddiit", SGSchema)
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const User = require('./User');
 const Subgreddiit = require('./Subgreddiit');
-
+const Report = require('./Report');
 
 const PostSchema = new Schema({
     text: {
@@ -33,7 +33,6 @@ const PostSchema = new Schema({
     }
 })
 PostSchema.pre('save', function (next) {
-    console.log(this.subgreddiit);
    Subgreddiit.updateOne({_id: this.subgreddiit}, {
        $push: {
            posts: this._id
@@ -43,6 +42,21 @@ PostSchema.pre('save', function (next) {
    }).catch(err => console.log(err));
 
    next();
+});
+
+PostSchema.pre('remove', function (next) {
+    Subgreddiit.updateOne({_id: this.subgreddiit}, {
+        $pull: {
+            posts: this._id
+        }
+    }).then((sg) => {
+        console.log("SG: " + this.subgreddiit + " updated");
+    }).catch(err => console.log(err));
+
+    Report.find({post: this._id}).deleteMany().then((docs) =>
+    console.log(docs)).catch(err => console.log("ERROR: ",err));
+
+    next();
 });
 
 const Post = mongoose.model("post", PostSchema)

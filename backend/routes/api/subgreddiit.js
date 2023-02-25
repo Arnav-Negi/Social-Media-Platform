@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
 const User = require('../../models/User');
 const Subgreddiit = require('../../models/Subgreddiit');
+const Report = require('../../models/Report');
 
 const express = require('express');
 const subgreddiitRouter = express.Router();
 const authenticateToken = require('../../auth/auth');
 const {body, validationResult} = require("express-validator");
 const moment = require("moment");
+const {model} = require("mongoose");
 
 subgreddiitRouter.post('/',
     authenticateToken,
@@ -46,14 +48,14 @@ subgreddiitRouter.post('/',
             moderator: body.id,
             members: [body.id],
             posts: [],
-            createdAt: moment().format("YYYMMDD"),
+            createdAt: moment().format("YYYYMMDD"),
             joinReqs: [],
             banned: []
         });
 
         newSub.save().then((sub) => {
             console.log("Printing sub", sub);
-            res.status(200).json(sub);
+             return res.status(200).json(sub);
         }).catch((err) => console.log("Error: ", err));
 
         return res.status(400);
@@ -84,12 +86,34 @@ subgreddiitRouter.get('/:id',
                 path: 'poster',
                 model: 'user'
             }
-        }).populate('members').populate('joinReqs').then((sub) => {
+        }).populate('members').populate('joinReqs').populate({
+            path: 'reports',
+            populate: [{
+                path: 'post',
+                model: 'post'
+            }, {
+                path: 'reported',
+                model: 'user'
+            }, {
+                path: 'reportedBy',
+                model: 'user'
+            }]
+        }).then((sub) => {
+            let reportList = []
+            for (let i = 0; i < sub.reports.length; i++) {
+                if (moment().diff(moment(sub.reports[i].createdAt, 'YYYYMMDD'), 'days') >= 10) {
+                    Report.findOne({_id: sub.reports[i]}).deleteOne();
+                }
+                else {
+                    reportList.push(sub.reports[i]._id);
+                }
+            }
+            Subgreddiit.updateOne({_id: id}, {reports: reportList});
             return res.status(200).json(sub)
         }).catch(err => console.log(err));
 
         return res.status(400);
-    })
+    });
 
 subgreddiitRouter.post('/remove',
     authenticateToken,

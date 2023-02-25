@@ -21,6 +21,8 @@ const subgreddiitRouter = require('./routes/api/subgreddiit')
 app.use('/subg', subgreddiitRouter);
 const postsRouter = require('./routes/api/posts')
 app.use('/posts', postsRouter);
+const reportRouter = require('./routes/api/reports')
+app.use('/report', reportRouter);
 
 const PORT = process.env.PORT || 5000;
 

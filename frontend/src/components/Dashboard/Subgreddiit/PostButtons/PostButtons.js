@@ -8,37 +8,42 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import {useEffect, useState} from "react";
 import {useRecoilState} from "recoil";
 import {userinfo} from "../../../../atoms/userinfo";
-import {SGinfo} from "../../../../atoms/SGinfo";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {ButtonGroup} from "@mui/material";
+import Button from "@mui/material/Button";
 
 function modifyList(list, thing) {
     const index = list.indexOf(thing);
+
     let temp = [...list];
-    if (index === -1 ){
+    if (index === -1) {
         temp.push(thing);
-    }
-    else {
+    } else {
         temp.splice(index, 1);
     }
     return temp;
 }
 
 export default function PostButtons(props) {
-    const [vote, setVote] = useState("");
-    const [saved, setSaved] = useState("");
-    const [follow, setFollow] = useState("");
-    const {post} = props;
-    const [postState, setPostState] = useState(post);
+    const [upvote, setUpvote] = useState([]);
+    const [downvote, setDownvote] = useState([]);
+    const [saved, setSaved] = useState([]);
+    const [follow, setFollow] = useState([]);
+    const [postState, setPostState] = useState(props.post);
     const [user, setUser] = useRecoilState(userinfo);
+    const [listPosts, setListPosts] = useState([...user.savedPosts.map(post => post._id)]);
 
     useEffect(() => {
-        if (postState.upvoteUsers.includes(user._id)) setVote("upvoted")
-        if (postState.downvoteUsers.includes(user._id)) setVote("downvoted");
+        if (postState.upvoteUsers.includes(user._id)) setUpvote(["upvote"])
+        else setUpvote([])
+        if (postState.downvoteUsers.includes(user._id)) setDownvote(["downvote"]);
+        else setDownvote([]);
 
-        if (user.savedPosts.includes(postState._id)) setSaved("saved");
-        if (user.following.includes(postState.poster)) setFollow("followed");
-    }, []);
+        if (listPosts.includes(postState._id)) setSaved(["saved"]);
+        else setSaved([]);
+        if (user.following.includes(postState.poster)) setFollow(["followed"]);
+        else setFollow([])
+    }, [user, postState, listPosts]);
 
 
     const toggleSaved = (e, value) => {
@@ -46,56 +51,55 @@ export default function PostButtons(props) {
             post: postState._id
         }).then(res => {
             if (res.status === 200) {
-                setSaved(value);
-                setUser({...user, savedPosts: modifyList(user.savedPosts, user._id)})
-            }
-            else alert("Couldn't save post.");
+                setListPosts( modifyList(listPosts, postState._id));
+            } else alert("Couldn't save post.");
         }).catch(err => console.log(err));
     }
 
-    const handleVotes = (e, value) => {
-        if (value === "upvoted") {
-            axios.post('/posts/upvote', {
-                post: postState._id
-            }).then(res => {
-                if (res.status === 200) {
-                    setVote(value);
-                    console.log(postState.upvoteUsers)
-                    setPostState({...postState, upvoteUsers: modifyList(postState.upvoteUsers, user._id)})
-                    console.log(postState.upvoteUsers)
-                }
-                else alert("Couldn't upvote post.");
-
-            }).catch(err => console.log(err));
-        }
-        else {
-            axios.post('/posts/downvote', {
-                post: postState._id
-            }).then(res => {
-                if (res.status === 200) {
-                    setVote(value);
-                    setPostState({...postState, downvoteUsers: modifyList(postState.downvoteUsers, user._id)})
-                }
-                else alert("Couldn't downvote post.");
-            }).catch(err => console.log(err));
-        }
+    const handleDownvotes = (e, value) => {
+        axios.post('/posts/vote', {
+            post: postState._id,
+            action: "downvote"
+        }).then(res => {
+            if (upvote.length !== 0) {
+                setPostState({...postState, upvoteUsers: modifyList(postState.upvoteUsers, user._id),
+                    downvoteUsers: modifyList(postState.downvoteUsers, user._id)});
+            }
+            else {
+                setPostState({...postState, downvoteUsers: modifyList(postState.downvoteUsers, user._id)})
+            }
+        }).catch(err => console.log(err));
     }
+
+    const handleUpvotes = (e, value) => {
+        axios.post('/posts/vote', {
+            post: postState._id,
+            action: "upvote"
+        }).then(res => {
+            if (downvote.length !== 0) {
+                setPostState({...postState, upvoteUsers: modifyList(postState.upvoteUsers, user._id),
+                    downvoteUsers: modifyList(postState.downvoteUsers, user._id)});
+            }
+            else {
+                setPostState({...postState, upvoteUsers: modifyList(postState.upvoteUsers, user._id)})
+            }
+        }).catch(err => console.log(err));
+    }
+
 
     const toggleFollow = (e, value) => {
         axios.post('/follow', {
-            following : postState.poster
+            following: postState.poster
         }).then(res => {
             if (res.status === 200) {
-                setFollow(value);
-                setUser({...user,  following: modifyList(user.following, postState.poster)});
-            }
-            else alert("Couldn't follow user.");
+                setUser({...user, following: modifyList(user.following, postState.poster)});
+            } else alert("Couldn't follow user.");
         }).catch(err => console.log(err));
     }
 
 
-    return (<div className={'mr-2 flex-col flex-wrap'}>
-            <ToggleButtonGroup value={saved} onChange={toggleSaved} orientation={'vertical'}>
+    return (<div className={'mr-2 flex-col'}>
+            <ToggleButtonGroup value={saved} onChange={toggleSaved}>
                 <ToggleButton value="saved" aria-label="bold" onChange={toggleFollow}>
                     <BookmarkIcon/>
                 </ToggleButton>
@@ -103,23 +107,25 @@ export default function PostButtons(props) {
             <ToggleButtonGroup
                 value={follow}
                 onChange={toggleFollow}
-                orientation={'vertical'}
             >
-                <ToggleButton value="followed" aria-label="italic">
+                <ToggleButton value="follow" aria-label="italic">
                     <PersonAddIcon/>
                 </ToggleButton>
             </ToggleButtonGroup>
             <ToggleButtonGroup
-                exclusive
-                value={vote}
-                onChange={handleVotes}
-                orientation={'vertical'}
+                value={upvote}
+                onChange={handleUpvotes}
             >
-                <ToggleButton value="upvoted" aria-label="color">
+                <ToggleButton value="upvote" aria-label="color">
                     <ArrowUpwardIcon/>
                     {postState.upvoteUsers.length}
                 </ToggleButton>
-                <ToggleButton value="downvoted" aria-label="italic">
+            </ToggleButtonGroup>
+            <ToggleButtonGroup
+                value={downvote}
+                onChange={handleDownvotes}
+            >
+                <ToggleButton value="downvote" aria-label="italic">
                     <ArrowDownwardIcon/>
                     {postState.downvoteUsers.length}
                 </ToggleButton>

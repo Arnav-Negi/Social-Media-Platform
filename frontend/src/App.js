@@ -14,10 +14,7 @@ function App() {
         components: {}
     });
 
-    axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
-    axios.defaults.headers = {
-        "Content-type": "application/json"
-    }
+    axios.defaults.baseURL = 'http://localhost:5000';
 
     return (
         <RecoilRoot>

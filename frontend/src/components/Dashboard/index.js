@@ -8,10 +8,13 @@ import {setToken} from "../../utils/checkToken"
 import axios from "axios";
 import MySubgreddiits from "./MySubgreddiits";
 import NewSubgreddiits from "./MySubgreddiits/NewSubgreddiits";
-import Subgreddiit from "./Subgreddiit/Subgreddiit"
 import EditProfile from "./Userinfo/EditProfile";
 import AllSubgreddit from "./Subgreddiit/AllSubgreddit";
 import MemberSubgreddiit from "./Subgreddiit/MemberSubgreddiit";
+import SavedPosts from "./SavedPosts";
+import Users from "./Subgreddiit/Users";
+import JoinReqs from "./Subgreddiit/JoinReqs";
+import Reports from "./Subgreddiit/Reports"
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -34,9 +37,12 @@ export default function Dashboard() {
                         <Route path={"/profile/subgreddiits/new"} element={<NewSubgreddiits />} />
                         <Route path={"/profile/subgreddiits/all"} element={<AllSubgreddit />} />
                         <Route path={"/profile"} element={<Userinfo/>} />
+                        <Route path={"/profile/saved"} element={<SavedPosts/>} />
                         <Route path={"/profile/edit"} element={<EditProfile />} />
                         <Route path={"/g/:id/member"} element={<MemberSubgreddiit />} />
-                        <Route path={"/g/:id/*"} element={<Subgreddiit />} />
+                        <Route path={"/g/:id/users"} element={<Users />} />
+                        <Route path={"/g/:id/join-reqs"} element={<JoinReqs />} />
+                        <Route path={"/g/:id/reports"} element={<Reports />} />
                     </Routes>
                 </div>
             </div>

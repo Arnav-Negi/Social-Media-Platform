@@ -14,7 +14,7 @@ const logout = () => {
     try {
         localStorage.removeItem("accessToken");
     } catch {}
-    delete axios.defaults.headers.common["x-auth-token"];
+    delete axios.defaults.headers["x-auth-token"];
 }
 
 export {setToken, logout};

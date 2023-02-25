@@ -3,12 +3,6 @@ services:
   api-server:
     image:
       api-server
-#    build:
-#      dockerfile: Dockerfile
-#      context: ./backend
-#    volumes:
-#      - /app/node_modules
-#      - /backend:/app
     restart: unless-stopped
     ports:
       - "5000:5000"
@@ -18,24 +12,8 @@ services:
       react-app
     stdin_open:
       true
-#    build:
-#      dockerfile: Dockerfile
-#      context: ./frontend
-#    volumes:
-#      - /app/node_modules
-#      - /frontend:/app
     restart: unless-stopped
     ports:
       - "3000:3000"
     depends_on:
       - api-server
-
-#  nginx:
-#    build:
-#      dockerfile: Dockerfile
-#      context: ./nginx
-#    ports:
-#      - "8000:80"
-#    depends_on:
-#      - frontend
-#      - backend
