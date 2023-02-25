@@ -9,24 +9,40 @@ followRouter.post('/',
     (req, res) => {
         User.findOne({_id: req.user.id}).then((user) => {
                 if (!user) return res.status(400).send("Follower not found.");
-                User.findOne({username: req.body.following}).then(( following) => {
+                User.findOne({username: req.body.following}).then((following) => {
                         if (!following) return res.status(400).send("User not found.");
 
                         const idx = user.following.indexOf(following._id);
                         if (idx === -1) {
-                            user.following.push(following._id);
-                            following.followers.push(user._id);
+                            User.updateOne({_id: user._id}, {
+                                $push: {
+                                    following: following._id
+                                }
+                            }).then((docs) => {
+                                User.updateOne({_id: following._id}, {
+                                    $push: {
+                                        followers: user._id
+                                    }
+                                }).then((docs) => {
+                                    return res.status(200).send("following toggled.");
+                                })
+                            });
+
                         } else {
-                            user.following.splice(idx, 1);
-                            following.followers.splice(following.followers.indexOf(user._id), 1)
+                            User.updateOne({_id: user._id}, {
+                                $pull: {
+                                    following: following._id
+                                }
+                            }).then((docs) => {
+                                User.updateOne({_id: following._id}, {
+                                    $pull: {
+                                        followers: user._id
+                                    }
+                                }).then((docs) => {
+                                    return res.status(200).send("following toggled.");
+                                })
+                            });
                         }
-                        User.updateOne({_id: user._id}, user).then((docs) => {
-                            console.log("User updated.")
-                        })
-                        User.updateOne({_id: following._id}, following).then((docs) => {
-                            console.log("followee updated.")
-                        })
-                        return res.status(200).send("following toggled.")
                     }
                 )
             }
@@ -47,16 +63,19 @@ followRouter.post('/remove',
                 const useridx = user.followers.indexOf(follower._id)
                 if (useridx == -1) return res.status(500).send()
 
-                follower.following.splice(followidx, 1)
-                user.followers.splice(useridx, 1)
-
-                follower.save().then((flw) => {
-                    console.log("follower saved")
-                }).catch(err => console.log(err))
-                user.save().then((flw) => {
-                    console.log("user saved")
-                }).catch(err => console.log(err))
-                return res.status(200).json(user);
+                User.updateOne({_id: user._id}, {
+                    $pull: {
+                        followers: follower._id
+                    }
+                }).then(docs => {
+                    User.updateOne({_id: follower._id}, {
+                        $pull: {
+                            following: user._id
+                        }
+                    }).then(docs => {
+                        return res.status(200).send();
+                    });
+                });
             })
         }).catch(err => console.log(err))
     })

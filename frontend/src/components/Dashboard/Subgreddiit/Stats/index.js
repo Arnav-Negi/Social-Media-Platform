@@ -1,8 +1,3 @@
-import {
-    List,
-    ListItem, ListItemButton,
-    ListItemText, Typography
-} from "@mui/material";
 import {userinfo} from "../../../../atoms/userinfo";
 import {useRecoilState} from "recoil";
 import {SGinfo} from "../../../../atoms/SGinfo";
@@ -12,7 +7,7 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 
 
-export default function JoinReqs() {
+export default function Stats() {
     const [user, setUser] = useRecoilState(userinfo);
     const [sg, setSg] = useRecoilState(SGinfo);
     const {id} = useParams();

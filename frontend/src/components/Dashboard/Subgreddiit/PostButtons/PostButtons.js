@@ -39,9 +39,9 @@ export default function PostButtons(props) {
         if (postState.downvoteUsers.includes(user._id)) setDownvote(["downvote"]);
         else setDownvote([]);
 
-        if (listPosts.includes(postState._id)) setSaved(["saved"]);
+        if (listPosts.includes(postState._id)) setSaved(["save"]);
         else setSaved([]);
-        if (user.following.includes(postState.poster)) setFollow(["followed"]);
+        if (user.following.includes(postState.poster._id)) setFollow(["follow"]);
         else setFollow([])
     }, [user, postState, listPosts]);
 
@@ -89,10 +89,11 @@ export default function PostButtons(props) {
 
     const toggleFollow = (e, value) => {
         axios.post('/follow', {
-            following: postState.poster
+            following: postState.poster.username,
+            username: user.username
         }).then(res => {
             if (res.status === 200) {
-                setUser({...user, following: modifyList(user.following, postState.poster)});
+                setUser({...user, following: modifyList(user.following, postState.poster._id)});
             } else alert("Couldn't follow user.");
         }).catch(err => console.log(err));
     }
@@ -100,7 +101,7 @@ export default function PostButtons(props) {
 
     return (<div className={'mr-2 flex-col'}>
             <ToggleButtonGroup value={saved} onChange={toggleSaved}>
-                <ToggleButton value="saved" aria-label="bold" onChange={toggleFollow}>
+                <ToggleButton value="save" aria-label="bold" onChange={toggleFollow}>
                     <BookmarkIcon/>
                 </ToggleButton>
             </ToggleButtonGroup>

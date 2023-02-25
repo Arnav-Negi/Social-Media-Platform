@@ -99,6 +99,15 @@ subgreddiitRouter.get('/:id',
                 model: 'user'
             }]
         }).then((sub) => {
+
+            if (sub.moderator != body.id) {
+                for (let i = 0; i < sub.posts.length; i++) {
+                    if (sub.blocked.includes(sub.posts[i].poster._id))  {
+                        sub.posts[i].poster.username = "Blocked User";
+                    }
+                }
+            }
+
             let reportList = []
             for (let i = 0; i < sub.reports.length; i++) {
                 if (moment().diff(moment(sub.reports[i].createdAt, 'YYYYMMDD'), 'days') >= 10) {

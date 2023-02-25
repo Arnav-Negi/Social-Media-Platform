@@ -15,6 +15,7 @@ import SavedPosts from "./SavedPosts";
 import Users from "./Subgreddiit/Users";
 import JoinReqs from "./Subgreddiit/JoinReqs";
 import Reports from "./Subgreddiit/Reports"
+import Stats from "./Subgreddiit/Stats";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function Dashboard() {
                         <Route path={"/g/:id/users"} element={<Users />} />
                         <Route path={"/g/:id/join-reqs"} element={<JoinReqs />} />
                         <Route path={"/g/:id/reports"} element={<Reports />} />
+                        <Route path={"/g/:id/stats"} element={<Stats />} />
                     </Routes>
                 </div>
             </div>

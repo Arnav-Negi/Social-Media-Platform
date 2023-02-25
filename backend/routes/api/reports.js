@@ -67,14 +67,10 @@ reportRouter.post('/block',
     (req, res) => {
         const userid = req.user.id;
 
-        Report.findOne({_id: req.body.report}).populate('subgreddiit',
-            'moderator').then((report) => {
+        Report.findOne({_id: req.body.report}).populate('subgreddiit').then((report) => {
             if (report.subgreddiit.moderator != userid) return res.status(400).send("Not a moderator.");
-
+            if (report.subgreddiit.blocked.includes(report.reported)) return res.status(200).send();
             Subgreddiit.updateOne({_id: report.subgreddiit._id}, {
-                $pull: {
-                    members: report.reported
-                },
                 $push: {
                     blocked: report.reported
                 }
