@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6882b58-4cb6-4768-ba8e-f5d8852ae683" name="Changes" comment="Done with part 1">
+      <change afterPath="$PROJECT_DIR$/2021101112.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/follow.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/follow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/reports.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/reports.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api/subgreddiit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/PostButtons/PostButtons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Stats/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/Subgreddiit/Stats/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,27 +38,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/arnav/courses/4/dass/ass-1/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/snap/webstorm/298/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/arnav/courses/4/dataVis/dv-labs/lab-1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "ts.external.directory.path": "/snap/webstorm/298/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend" />
@@ -170,7 +164,10 @@
       <workItem from="1677268877242" duration="2938000" />
       <workItem from="1677272985978" duration="12029000" />
       <workItem from="1677294989775" duration="17019000" />
-      <workItem from="1677329858926" duration="15565000" />
+      <workItem from="1677329858926" duration="15882000" />
+      <workItem from="1679412618538" duration="2567000" />
+      <workItem from="1679461040578" duration="661000" />
+      <workItem from="1679521705912" duration="34000" />
     </task>
     <task id="LOCAL-00001" summary="added tailwind">
       <created>1674319976456</created>
